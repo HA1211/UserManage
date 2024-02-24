@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">UserManage</string>
+    <string name="intro_text_description">Collaborate and Plan together</string>
 </resources>
