@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.nqh.usermanage.databinding.ActivitySignUpBinding
 
 class SignUpActivity : BaseActivity() {
@@ -22,6 +25,9 @@ class SignUpActivity : BaseActivity() {
         binding.toolbarSignUp.setNavigationOnClickListener {
             onBackPressed()
         }
+        binding.btnSignUp.setOnClickListener {
+            registerUser()
+        }
     }
 
 
@@ -31,7 +37,18 @@ class SignUpActivity : BaseActivity() {
         val password: String = binding.etPassword.text.toString().trim{it <= ' '}
 
         if(validateForm(name, email, password)){
-            Toast.makeText(this@SignUpActivity, "Now we can register a new user", Toast.LENGTH_SHORT).show()
+            showProgressDialog("Please Wait")
+            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener {task ->
+                hideProgressDialog()
+                if(task.isSuccessful){
+                    val firebaseUser: FirebaseUser = task.result!!.user!!
+                    val registeredEmail = firebaseUser.email!!
+                    Toast.makeText(this,"$name you have successful with email $registeredEmail", Toast.LENGTH_SHORT).show()
+                    FirebaseAuth.getInstance().signOut()
+                }else{
+                    Toast.makeText(this,"Registration failed", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
     }

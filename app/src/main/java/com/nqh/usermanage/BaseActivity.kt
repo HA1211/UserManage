@@ -1,14 +1,13 @@
 package com.nqh.usermanage
 
 import android.app.Dialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -17,19 +16,18 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
-    fun showProgressDialog(text: String){
+
+    fun showProgressDialog(text: String) {
         mProgressDialog = Dialog(this)
-
         mProgressDialog.setContentView(R.layout.dialog_progess)
-
 //        mProgressDialog.tv_progress_text.text = text
-
         mProgressDialog.show()
     }
 
-    fun hideProgressDialog(){
+    fun hideProgressDialog() {
         mProgressDialog.dismiss()
     }
 
@@ -38,8 +36,8 @@ open class BaseActivity : AppCompatActivity() {
         return FirebaseAuth.getInstance().currentUser!!.uid
     }
 
-    fun doubleBackToExit(){
-        if(doubleBackToExitPressedOnce){
+    fun doubleBackToExit() {
+        if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
             return
         }
@@ -47,23 +45,15 @@ open class BaseActivity : AppCompatActivity() {
         this.doubleBackToExitPressedOnce = true
         Toast.makeText(this, "Please click back again to exit", Toast.LENGTH_SHORT).show()
 
-        Handler().postDelayed({doubleBackToExitPressedOnce = false}, 2000)
+        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 
-    fun showErrorSnackBar(message: String){
+    fun showErrorSnackBar(message: String) {
         val snackBar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG)
         val snackBarView = snackBar.view
         snackBarView.setBackgroundColor(ContextCompat.getColor(this, R.color.red))
         snackBar.show()
     }
-
-
-
-
-
-
-
-
 
 
 }

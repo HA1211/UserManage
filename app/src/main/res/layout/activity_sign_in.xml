@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/intro_background"
     android:orientation="vertical"
-    tools:context=".SignUpActivity">
+    tools:context=".SignInActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_sign_in"
@@ -34,6 +34,7 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/et_email_sign_in"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin"
@@ -41,6 +42,7 @@
                 android:textSize="@dimen/text_size" />
 
             <EditText
+                android:id="@+id/et_password_sign_in"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin"
