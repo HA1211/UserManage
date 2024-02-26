@@ -8,7 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import com.nqh.usermanage.databinding.ActivityIntroBinding
 
-class IntroActivity : AppCompatActivity() {
+class IntroActivity : BaseActivity() {
 
     lateinit var binding: ActivityIntroBinding
     override fun onCreate(savedInstanceState: Bundle?) {

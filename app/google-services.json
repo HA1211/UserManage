@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "971547706974",
+    "project_id": "usermanage-176cf",
+    "storage_bucket": "usermanage-176cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971547706974:android:ea5804714627fc70fbd6cf",
+        "android_client_info": {
+          "package_name": "com.nqh.usermanage"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8da_GqwcvooA70KusT6qn-OtdnVB4hCk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
