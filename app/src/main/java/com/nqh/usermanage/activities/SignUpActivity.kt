@@ -1,13 +1,14 @@
-package com.nqh.usermanage
+package com.nqh.usermanage.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.nqh.usermanage.databinding.ActivitySignUpBinding
+import com.nqh.usermanage.firebase.FirestoreClass
+import com.nqh.usermanage.models.User
+
 
 class SignUpActivity : BaseActivity() {
 
@@ -30,6 +31,13 @@ class SignUpActivity : BaseActivity() {
         }
     }
 
+    fun userRegisteredSuccess(){
+        Toast.makeText(this,"You have successful with email", Toast.LENGTH_SHORT).show()
+        hideProgressDialog()
+        FirebaseAuth.getInstance().signOut()
+        finish()
+    }
+
 
     private fun registerUser(){
         val name: String = binding.etName.text.toString().trim{it <= ' '} //cat khoang trong
@@ -43,8 +51,9 @@ class SignUpActivity : BaseActivity() {
                 if(task.isSuccessful){
                     val firebaseUser: FirebaseUser = task.result!!.user!!
                     val registeredEmail = firebaseUser.email!!
-                    Toast.makeText(this,"$name you have successful with email $registeredEmail", Toast.LENGTH_SHORT).show()
-                    FirebaseAuth.getInstance().signOut()
+                    val user = User(firebaseUser.uid, name, registeredEmail)
+
+                    FirestoreClass().registerUser(this, user)
                 }else{
                     Toast.makeText(this,"Registration failed", Toast.LENGTH_SHORT).show()
                 }

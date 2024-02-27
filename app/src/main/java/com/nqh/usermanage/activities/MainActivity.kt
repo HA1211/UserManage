@@ -1,4 +1,4 @@
-package com.nqh.usermanage
+package com.nqh.usermanage.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
