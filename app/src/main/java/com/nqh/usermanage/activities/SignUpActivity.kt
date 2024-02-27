@@ -32,18 +32,18 @@ class SignUpActivity : BaseActivity() {
     }
 
     fun userRegisteredSuccess(){
-        Toast.makeText(this,"You have successful with email", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"You have successful with email", Toast.LENGTH_LONG).show()
         hideProgressDialog()
         FirebaseAuth.getInstance().signOut()
         finish()
     }
 
 
-    private fun registerUser(){
-        val name: String = binding.etName.text.toString().trim{it <= ' '} //cat khoang trong
-        val email: String = binding.etEmail.text.toString().trim{it <= ' '}
-        val password: String = binding.etPassword.text.toString().trim{it <= ' '}
-
+    private fun registerUser(
+        name: String = binding.etName.text.toString().trim{it <= ' '},
+        email: String = binding.etEmail.text.toString().trim{it <= ' '},
+        password: String = binding.etPassword.text.toString().trim{it <= ' '}
+    ){
         if(validateForm(name, email, password)){
             showProgressDialog("Please Wait")
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener {task ->

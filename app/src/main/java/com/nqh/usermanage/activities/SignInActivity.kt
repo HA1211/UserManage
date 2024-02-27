@@ -9,6 +9,8 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.nqh.usermanage.databinding.ActivitySignInBinding
+import com.nqh.usermanage.firebase.FirestoreClass
+import com.nqh.usermanage.models.User
 
 class SignInActivity : BaseActivity() {
 
@@ -34,17 +36,23 @@ class SignInActivity : BaseActivity() {
         }
     }
 
-    private fun signInRegisteredUser(){
-        val email: String = binding.etEmailSignIn.text.toString().trim{it <= ' '}
-        val password: String = binding.etPasswordSignIn.text.toString().trim{it <= ' '}
+    fun signInSuccess(user: User) {
+        hideProgressDialog()
+        startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+        finish()
+    }
+
+    private fun signInRegisteredUser(
+        email: String = binding.etEmailSignIn.text.toString().trim{it <= ' '},
+        password: String = binding.etPasswordSignIn.text.toString().trim{it <= ' '}
+    ){
         if(validateForm(email, password)){
             showProgressDialog("Please Wait")
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     hideProgressDialog()
                     if (task.isSuccessful) {
-                        Log.d("hiep", "createUserWithEmail:success")
-                        val user = auth.currentUser
+                        FirestoreClass().signInUser(this)
                         startActivity(Intent(this@SignInActivity, MainActivity::class.java))
                     } else {
                         Log.w("hiep", "createUserWithEmail:failure", task.exception)
