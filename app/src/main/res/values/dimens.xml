@@ -4,4 +4,7 @@
     <dimen name="btn_text_size">20sp</dimen>
     <dimen name="text_size">15sp</dimen>
     <dimen name="margin">15dp</dimen>
+    <dimen name="margin_top">5dp</dimen>
+    <dimen name="margin_bottom">10dp</dimen>
+    <dimen name="text_size_user_name">18dp</dimen>
 </resources>

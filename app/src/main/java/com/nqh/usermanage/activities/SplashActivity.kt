@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.nqh.usermanage.R
+import com.nqh.usermanage.firebase.FirestoreClass
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +14,13 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this@SplashActivity, IntroActivity::class.java))
+            var currentUserId = FirestoreClass().getCurrentUserID()
+            if(currentUserId.isNotEmpty()){
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            }else{
+                startActivity(Intent(this@SplashActivity, IntroActivity::class.java))
+            }
+            finish()
         }, 2500L)
     }
 
