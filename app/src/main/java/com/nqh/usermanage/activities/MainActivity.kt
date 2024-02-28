@@ -2,10 +2,11 @@ package com.nqh.usermanage.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.nqh.usermanage.R
 import com.nqh.usermanage.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
 
+class MainActivity : BaseActivity() {
 
     lateinit var binding: ActivityMainBinding
 
@@ -13,5 +14,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
     }
+
+    private fun setupActionBar(){
+        setSupportActionBar(binding.)
+    }
+
 }
