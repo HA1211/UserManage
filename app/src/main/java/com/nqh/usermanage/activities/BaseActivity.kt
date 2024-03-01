@@ -3,6 +3,7 @@ package com.nqh.usermanage.activities
 import android.app.Dialog
 import android.os.Bundle
 import android.os.Handler
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -17,14 +18,17 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setContentView(R.layout.activity_base)
     }
 
 
     fun showProgressDialog(text: String) {
         mProgressDialog = Dialog(this)
         mProgressDialog.setContentView(R.layout.dialog_progess)
-//        mProgressDialog.tv_progress_text.text = text
+        val tvProgressText = findViewById<TextView>(R.id.tv_progress_text)
+
+        //chắc là lỗi, hoặc không
+        tvProgressText.text = text
         mProgressDialog.show()
     }
 

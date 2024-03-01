@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/profile"
+        android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_profile_24"
         android:title="Profile"/>
     <item
-        android:id="@+id/sign_out"
+        android:id="@+id/navigation_sign_out"
         android:icon="@drawable/ic_logout_24"
         android:title="Sign Out"/>
 </menu>
