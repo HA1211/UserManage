@@ -1,9 +1,11 @@
 package com.nqh.usermanage.firebase
 
+import android.app.Activity
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.nqh.usermanage.activities.MainActivity
 import com.nqh.usermanage.activities.SignInActivity
 import com.nqh.usermanage.activities.SignUpActivity
 import com.nqh.usermanage.models.User
@@ -25,17 +27,30 @@ class FirestoreClass {
             }
     }
 
-    fun signInUser(activity: SignInActivity){
+    fun signInUser(activity: Activity){
         mFireStore.collection(Constants.USERS)
             .document(getCurrentUserID())
             .get()
             .addOnSuccessListener { document ->
-                val loggedInUser = document.toObject(User::class.java)
-                if(loggedInUser != null)
-                    activity.signInSuccess(loggedInUser)
+                val loggedInUser = document.toObject(User::class.java)!!
+                when(activity){
+                    is SignInActivity ->{
+                        activity.signInSuccess(loggedInUser)
+                    }
+                    is MainActivity ->{
+                        activity.updateNavigationUserDetails(loggedInUser)
+                    }
+                }
+
             }.addOnFailureListener {
-                    e ->
-                Log.e("tag hiep", "Error")
+                when(activity){
+                    is SignInActivity ->{
+                        activity.hideProgressDialog()
+                    }
+                    is MainActivity ->{
+                        activity.hideProgressDialog()
+                    }
+                }
             }
     }
 

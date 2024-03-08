@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
+import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.nqh.usermanage.R
@@ -14,9 +16,9 @@ import com.nqh.usermanage.databinding.ActivityMainBinding
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
-    val toolbarMain = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar_main)
+    private val toolbarMain: Toolbar = findViewById(R.id.toolbar_main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         setupActionBar()
         binding.navView.setNavigationItemSelectedListener(this)
+    }
+
+    fun updateNavigationUserDetails(user: com.nqh.usermanage.models.User){
+        Glide.with(this).load(user.image).placeholder(R.drawable.ic_user_place_holder).into(findViewById(R.id.nav_user_image))
     }
 
     private fun setupActionBar() {

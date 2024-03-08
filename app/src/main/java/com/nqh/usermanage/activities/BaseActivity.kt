@@ -27,7 +27,6 @@ open class BaseActivity : AppCompatActivity() {
         mProgressDialog.setContentView(R.layout.dialog_progess)
         val tvProgressText = findViewById<TextView>(R.id.tv_progress_text)
 
-        //chắc là lỗi, hoặc không
         tvProgressText.text = text
         mProgressDialog.show()
     }
@@ -36,7 +35,7 @@ open class BaseActivity : AppCompatActivity() {
         mProgressDialog.dismiss()
     }
 
-    //hàm lấy id người dùng hiện tại
+
     fun getCurrentUserID(): String {
         return FirebaseAuth.getInstance().currentUser!!.uid
     }
