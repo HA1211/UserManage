@@ -18,14 +18,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private lateinit var binding: ActivityMainBinding
 
-    private val toolbarMain: Toolbar = findViewById(R.id.toolbar_main)
+//    private val toolbarMain: Toolbar = findViewById(R.id.toolbar_main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupActionBar()
+//        setupActionBar()
         binding.navView.setNavigationItemSelectedListener(this)
     }
 
@@ -33,14 +33,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         Glide.with(this).load(user.image).placeholder(R.drawable.ic_user_place_holder).into(findViewById(R.id.nav_user_image))
     }
 
-    private fun setupActionBar() {
-        setSupportActionBar(toolbarMain)
-        toolbarMain.setNavigationIcon(R.drawable.ic_navigation_menu)
-
-        toolbarMain.setNavigationOnClickListener {
-            toggleDrawer()
-        }
-    }
+//    private fun setupActionBar() {
+//        setSupportActionBar(toolbarMain)
+//        toolbarMain.setNavigationIcon(R.drawable.ic_navigation_menu)
+//
+//        toolbarMain.setNavigationOnClickListener {
+//            toggleDrawer()
+//        }
+//    }
 
     private fun toggleDrawer(){
         if(binding.drawerLayoutMainActivity.isDrawerOpen(GravityCompat.START)){
