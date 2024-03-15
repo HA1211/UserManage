@@ -37,24 +37,26 @@
                 android:id="@+id/et_email_sign_in"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin"
+                android:inputType="textEmailAddress"
+                android:layout_margin="15dp"
                 android:hint="Email"
-                android:textSize="@dimen/text_size" />
+                android:textSize="15sp" />
 
             <EditText
                 android:id="@+id/et_password_sign_in"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin"
+                android:layout_margin="15dp"
+                android:inputType="textPassword"
                 android:hint="Password"
-                android:textSize="@dimen/text_size" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/btn_sign_in"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/margin"
+                android:layout_margin="15dp"
                 android:background="@drawable/button_sign_in_background"
                 android:foreground="?attr/selectableItemBackground"
                 android:gravity="center"
