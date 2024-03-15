@@ -37,8 +37,8 @@
                 android:id="@+id/et_email_sign_in"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
                 android:layout_margin="15dp"
+                android:inputType="textEmailAddress"
                 android:hint="Email"
                 android:textSize="15sp" />
 
@@ -47,7 +47,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:inputType="textPassword"
                 android:hint="Password"
                 android:textSize="15sp" />
 
@@ -64,7 +63,6 @@
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/btn_text_size"
                 android:textStyle="bold" />
-
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

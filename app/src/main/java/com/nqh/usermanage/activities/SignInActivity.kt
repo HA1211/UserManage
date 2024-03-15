@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.nqh.usermanage.R
 import com.nqh.usermanage.databinding.ActivitySignInBinding
 import com.nqh.usermanage.firebase.FirestoreClass
 import com.nqh.usermanage.models.User
@@ -39,7 +40,7 @@ class SignInActivity : BaseActivity() {
     fun signInSuccess(user: User) {
         hideProgressDialog()
         startActivity(Intent(this@SignInActivity, MainActivity::class.java))
-        finish()
+        this.finish()
     }
 
     private fun signInRegisteredUser(
@@ -47,12 +48,11 @@ class SignInActivity : BaseActivity() {
         password: String = binding.etPasswordSignIn.text.toString().trim{it <= ' '}
     ){
         if(validateForm(email, password)){
-            showProgressDialog("Please Wait")
+            showProgressDialog(resources.getString(R.string.please_wait))
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
-                    hideProgressDialog()
                     if (task.isSuccessful) {
-                        FirestoreClass().signInUser(this)
+                        FirestoreClass().signInUser(this@SignInActivity)
                         startActivity(Intent(this@SignInActivity, MainActivity::class.java))
                     } else {
                         Log.w("hiep", "createUserWithEmail:failure", task.exception)
