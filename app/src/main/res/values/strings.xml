@@ -16,5 +16,6 @@
 
     <string name="nav_my_profile">My Profile</string>
     <string name="nav_sign_out">Sign Out</string>
+    <string name="text_sign_in">Sign In</string>
 
 </resources>
